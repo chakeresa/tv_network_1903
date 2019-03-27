@@ -3,7 +3,6 @@ require 'minitest/pride'
 require './lib/network'
 
 class NetworkTest < Minitest::Test
-
   def setup
     @michael_knight = Character.new({name: "Michael Knight", actor: "David Hasselhoff", salary: 1_600_000})
     @kitt = Character.new({name: "KITT", actor: "William Daniels", salary: 1_000_000})
@@ -29,5 +28,19 @@ class NetworkTest < Minitest::Test
     @nbc.add_show(@parks_and_rec)
 
     assert_equal [@knight_rider, @parks_and_rec], @nbc.shows
+  end
+
+  def test_it_returns_ary_with_all_characters
+    @nbc.add_show(@knight_rider)
+    @nbc.add_show(@parks_and_rec)
+
+    assert_equal [@michael_knight, @kitt, @leslie_knope, @ron_swanson], @nbc.all_characters
+  end
+
+  def test_it_returns_name_of_highest_paid_actor
+    @nbc.add_show(@knight_rider)
+    @nbc.add_show(@parks_and_rec)
+
+    assert_equal "Amy Poehler", @nbc.highest_paid_actor
   end
 end

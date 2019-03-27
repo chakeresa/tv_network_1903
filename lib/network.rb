@@ -11,4 +11,17 @@ class Network
   def add_show(show)
     @shows << show
   end
+
+  def all_characters
+    all_chars = @shows.map do |show|
+      show.characters
+    end
+
+    all_chars.flatten!
+  end
+
+  def highest_paid_actor
+    highest_paid_character = all_characters.max_by {|character| character.salary}
+    highest_paid_character.actor
+  end
 end
