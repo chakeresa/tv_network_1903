@@ -24,4 +24,14 @@ class Network
     highest_paid_character = all_characters.max_by {|character| character.salary}
     highest_paid_character.actor
   end
+
+  def payroll
+    payroll_hash = {}
+
+    all_characters.each do |character|
+      payroll_hash[character.actor] = character.salary
+    end
+
+    payroll_hash
+  end
 end
