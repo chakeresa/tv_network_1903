@@ -17,7 +17,7 @@ class Network
       show.characters
     end
 
-    all_chars.flatten!
+    all_chars.flatten
   end
 
   def highest_paid_actor
